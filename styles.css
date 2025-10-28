@@ -21,6 +21,50 @@
             margin-bottom: 30px;
         }
 
+        .vote-alert {
+            max-width: 1200px;
+            margin: 0 auto 30px auto; /* Espaço abaixo antes da galeria */
+            padding: 15px 25px;
+            
+            background-color: #2a2a2a; /* Um pouco mais claro que o fundo */
+            border: 1px solid #444;
+            border-left: 5px solid var(--neon-color-light); /* Destaque na esquerda */
+            border-radius: 8px;
+            
+            display: flex; /* Para alinhar o ícone com o texto */
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .vote-alert span {
+            font-size: 1.5em; /* Tamanho do ícone */
+            margin-right: 15px; /* Espaço entre ícone e texto */
+            animation: bounce 1.5s infinite; /* Animação sutil */
+        }
+
+        .vote-alert p {
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+        
+        .vote-alert:hover {
+            transform: translateY(-5px); /* Um pequeno "levantar" do card */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+            
+            /* Efeito de Borda Neon */
+            border-color: var(--neon-color-dark);
+            box-shadow: 
+                0 0 5px var(--neon-color-light),
+                0 0 10px var(--neon-color-dark),
+                0 0 20px rgba(255, 170, 0, 0.4), /* Um brilho mais difuso */
+                0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra principal */
+        }
+
         /* 3. Container da Galeria (CSS Grid) */
         .gallery-container {
             display: grid;
