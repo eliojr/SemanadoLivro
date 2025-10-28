@@ -1,0 +1,123 @@
+/* 1. Cores e Variáveis (para facilitar a mudança de neon) */
+        :root {
+            --neon-color-dark: #cc7000; /* Um laranja-cobre escuro */
+            --neon-color-light: #ffaa00; /* Um laranja-ouro mais claro e brilhante */
+            --card-bg: #222222; /* Fundo do cartão */
+        }
+
+        /* 2. Estilos Globais (Tema Escuro) */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 30px;
+            background-color: #121212; /* Fundo escuro */
+            color: #f0f0f0; /* Texto claro */
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* 3. Container da Galeria (CSS Grid) */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 4. O Cartão do Jogo (Ajustado) */
+        .game-card {
+            display: block; /* Faz o link 'a' se comportar como um bloco */
+            text-decoration: none;
+            color: inherit;
+            
+            background-color: var(--card-bg); /* Fundo do cartão */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Importante para o zoom */
+            
+            /* Transições para efeitos de hover */
+            transition: 
+                box-shadow 0.3s ease-out, 
+                transform 0.3s ease-out,
+                border-color 0.3s ease-out; /* Para o brilho da borda */
+
+            border: 2px solid transparent; /* Borda transparente inicial para o neon */
+        }
+
+        /* 5. A Área do Pôster e Imagem */
+        .poster-wrapper {
+            position: relative;
+            overflow: hidden; /* Para o zoom da imagem não vazar */
+            border-radius: 10px 10px 0 0; /* Arredonda só em cima */
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 280%; /* Altura fixa para todos os pôsteres */
+            object-fit: cover; /* Recorta a imagem para cobrir o espaço */
+            display: block;
+            transition: transform 0.4s ease-out; /* Transição suave para o zoom */
+        }
+
+        /* 6. A Área de Informações (Sempre visível) */
+        .game-info {
+            padding: 15px 20px; /* Padding ajustado */
+            text-align: left;
+            background-color: #1a1a1a; /* Fundo ligeiramente mais escuro que o card */
+            border-top: 1px solid #333; /* Uma linha para separar a imagem */
+            border-radius: 0 0 10px 10px; /* Arredonda só embaixo */
+        }
+
+        .game-info .game-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 5px 0;
+            line-height: 1.3; /* Espaçamento entre linhas */
+        }
+
+        .game-info .game-author {
+            font-size: 0.85em;
+            color: #b0b0b0; /* Cor um pouco mais clara */
+            margin: 0;
+        }
+
+        /* 7. Efeitos de Hover (Zoom + Borda Neon) */
+        .game-card:hover {
+            transform: translateY(-5px); /* Um pequeno "levantar" do card */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+            
+            /* Efeito de Borda Neon */
+            border-color: var(--neon-color-dark);
+            box-shadow: 
+                0 0 5px var(--neon-color-light),
+                0 0 10px var(--neon-color-dark),
+                0 0 20px rgba(255, 170, 0, 0.4), /* Um brilho mais difuso */
+                0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra principal */
+        }
+
+        .game-card:hover img {
+            transform: scale(1.1); /* O zoom da imagem */
+        }
+        
+        /* 8. Responsividade */
+        @media (max-width: 900px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 15px;
+            }
+        }
